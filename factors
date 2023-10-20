@@ -1,0 +1,40 @@
+#!/bin/bash
+factorial()
+{
+    if [ $# -ne 3 ]
+    then
+        ags=("$@")
+        c=0
+        m2=1
+        for arg in ${ags[*]}
+        do
+            if [ $c -gt 1 ]
+            then
+                m2=$(echo $arg*$m2 | bc)
+            fi
+            c=$((c + 1))
+        done
+    else
+        m2=3
+    fi
+    m1=$2
+    m=$(echo "$1"| tr ':' '=')
+    res=$(echo "if($m2 > $m1) 1 else 0" | bc)
+       if (( res == 1)); then
+            mcp=$m1
+            m1=$m2
+            m2=mcp
+       fi
+    echo "$m$m1*$m2"
+}
+if [ $# -ne 1 ]
+then
+    echo 'Usage: factors <file>'
+    exit 1
+else
+    while read i
+    do
+        res=$(factor "$i")
+        factorial $res
+    done < "$i"
+fi
