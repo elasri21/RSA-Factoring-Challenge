@@ -36,5 +36,5 @@ else
     do
         res=$(factor "$i")
         factorial $res
-    done < "$i"
+    done < "$1"
 fi
