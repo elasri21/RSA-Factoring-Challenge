@@ -2,14 +2,14 @@
 # check for a factor
 factorial()
 {
-    if [ $# -ne 3 ]
+    if [ $# -ne 3 ];
     then
         ags=("$@")
         c=0
         m2=1
         for arg in ${ags[*]}
         do
-            if [ $c -gt 1 ]
+            if [ $c -gt 1 ];
             then
                 m2=$(echo $arg*$m2 | bc)
             fi
@@ -22,7 +22,7 @@ factorial()
     m1=$2
     m=$(echo "$1" | tr ':' '=')
     res=$(echo "if($m2 > $m1) 1 else 0" | bc)
-       if (( res == 1)); then
+       if ((res == 1)); then
             mcp=$m1
             m1=$m2
             m2=$mcp
