@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/env bash
+# check for a factor
 factorial()
 {
     if [ $# -ne 3 ]
@@ -15,15 +16,16 @@ factorial()
             c=$((c + 1))
         done
     else
-        m2=3
+        m2=$3
     fi
+
     m1=$2
-    m=$(echo "$1"| tr ':' '=')
+    m=$(echo "$1" | tr ':' '=')
     res=$(echo "if($m2 > $m1) 1 else 0" | bc)
        if (( res == 1)); then
             mcp=$m1
             m1=$m2
-            m2=mcp
+            m2=$mcp
        fi
     echo "$m$m1*$m2"
 }
