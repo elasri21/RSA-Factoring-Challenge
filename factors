@@ -5,15 +5,15 @@ factorial()
     if [ $# -ne 3 ];
     then
         ags=("$@")
-        c=0
+        ctr=0
         m2=1
-        for arg in ${ags[*]}
+        for arg in ${ags[*]};
         do
-            if [ $c -gt 1 ];
+            if [ $ctr -gt 1 ];
             then
                 m2=$(echo $arg*$m2 | bc)
             fi
-            c=$((c + 1))
+            ctr=$((ctr + 1))
         done
     else
         m2=$3
